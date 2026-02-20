@@ -1,0 +1,238 @@
+.meet-team {
+    padding: 6rem 1rem 4rem;
+    background-color: #ffffff;
+    min-height: 100vh;
+    color: #3b5c6b;
+    font-family: var(--font-main);
+    /* Assuming font family */
+}
+
+.meet-team-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.meet-team h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #3b5c6b;
+    /* Dark slate blueish color from image */
+}
+
+.team-section {
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+    /* Light separator */
+    padding-bottom: 3rem;
+    text-align: center;
+}
+
+.team-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.team-section h2 {
+    text-align: center;
+    /* text-align: center; Usually handled by parent, but let's ensure */
+    display: inline-block;
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    /* remove default underline */
+    margin-bottom: 3rem;
+    color: #4a5d66;
+    letter-spacing: 0.5px;
+}
+
+.team-section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    /* Match previous offset */
+    height: 1px;
+    width: 0;
+    background-color: currentColor;
+    animation: underline-grow 1s ease-out forwards;
+}
+
+@keyframes underline-grow {
+    to {
+        width: 100%;
+    }
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.team-card {
+    text-align: center;
+    width: 250px;
+    opacity: 0;
+    /* Start invisible */
+    animation: fade-up 0.8s ease-out forwards;
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.member-photo {
+    width: 100%;
+    aspect-ratio: 4/3;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    /* Ensure flex is enabled to center the placeholder icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right top;
+    /* Align to right to show logo */
+}
+
+/* Style for the placeholder icon when image is null */
+.placeholder-icon {
+    width: 40px;
+    height: 40px;
+    color: #333;
+    /* Dark icon color */
+}
+
+.member-info h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3b5c6b;
+    margin-bottom: 0.25rem;
+}
+
+.member-role {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+.member-email {
+    font-size: 0.95rem;
+    color: #5e8494;
+    /* Lighter blue */
+    text-decoration: none;
+}
+
+/* Full Width Dark Contact Section */
+.contact-section-full {
+    background-color: #3b5c6b;
+    /* Muted teal/slate color */
+    color: white;
+    padding: 4rem 1rem;
+    width: 100%;
+}
+
+.contact-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    /* Slight rounding */
+    font-size: 0.95rem;
+    background: #ffffff;
+    font-family: inherit;
+    color: #333;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #999;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.submit-btn {
+    background-color: #a8d5e2;
+    /* Light powder blue */
+    color: #2c4450;
+    border: none;
+    border-radius: 50px;
+    /* Full pill shape */
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #90c2d2;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .meet-team {
+        padding-top: 5rem;
+    }
+}

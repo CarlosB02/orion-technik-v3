@@ -1,0 +1,176 @@
+/* Design 2 specific overrides and styles */
+.design2-page {
+    background-color: #fff;
+    overflow-x: hidden;
+    font-family: var(--font-main), sans-serif;
+    /* Enforce site font */
+}
+
+/* Services Container */
+.d2-services-section {
+    padding: 6rem 2rem;
+    background-color: #f8fafc;
+    text-align: center;
+}
+
+.d2-section-header {
+    margin-bottom: 4rem;
+}
+
+.d2-section-header h2 {
+    font-size: 2.5rem;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    font-family: var(--font-main), sans-serif;
+}
+
+.d2-section-header p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* The Grid/Row */
+.d2-services-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+/* Individual Cards */
+.d2-service-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.d2-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.d2-card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Overlay gradient on image */
+.d2-card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+.d2-card-content {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.d2-card-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 0.5rem 0;
+    font-family: var(--font-main), sans-serif;
+}
+
+.d2-card-subtitle {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--color-bg-dark);
+    /* Changed from #38bdf8 to site dark blue */
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.d2-card-content p {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+}
+
+/* Footer & Buttons */
+.d2-card-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    /* Align buttons in a row */
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Wrap if needed, but prefer row */
+}
+
+/* Force Certificates container to be row too, if needed */
+.d2-card-footer .certificates-container {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.d2-learn-more-btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    background-color: transparent;
+    border: 1px solid var(--color-bg-dark);
+    /* Use site dark blue */
+    color: var(--color-bg-dark);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-main), sans-serif;
+}
+
+.d2-learn-more-btn:hover {
+    background-color: var(--color-bg-dark);
+    color: white;
+}
+
+/* Certificates button override to ensure they fit */
+.d2-card-footer .cert-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.8rem;
+    white-space: nowrap;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .d2-services-row {
+        flex-wrap: wrap;
+    }
+
+    .d2-service-card {
+        min-width: 45%;
+        /* 2 per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .d2-service-card {
+        min-width: 100%;
+        /* 1 per row */
+    }
+}

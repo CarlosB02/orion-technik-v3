@@ -1,0 +1,192 @@
+.certificates-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.cert-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-bg-dark);
+    border-radius: 50px;
+    background: transparent;
+    color: var(--color-bg-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    /* Smaller font to fit */
+    letter-spacing: normal;
+    text-transform: none;
+    white-space: nowrap;
+}
+
+.cert-button:hover {
+    background: var(--color-bg-dark);
+    color: white;
+    padding-right: 2rem;
+    /* remove transform/box-shadow from previous iteration if not in learn-more */
+    transform: none;
+    box-shadow: none;
+    /* add expansion if desired, but padding-right change mimics the learn more btn */
+}
+
+@media (max-width: 900px) {
+    .cert-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Modal Overlay */
+.cert-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+    padding: 2rem;
+    cursor: pointer;
+}
+
+/* 
+   Frame containing the scrollable area AND the close button.
+   No overflow:hidden here, so the button can hang outside.
+*/
+.cert-modal-frame {
+    max-width: 1000px;
+    width: 90vw;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    animation: scaleIn 0.3s 0.1s forwards;
+    cursor: default;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    /* Center content horizontally */
+}
+
+/* Close button - absolute to the Frame */
+.cert-close-btn {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    background: white;
+    border: none;
+    color: var(--color-bg-dark);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.cert-close-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    background: #f0f0f0;
+}
+
+
+.plane-icon {
+    transform: rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .cert-close-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 2005;
+        /* Ensure above everything including overlay */
+    }
+}
+
+
+/* The scrollable area wrapper */
+.cert-scroll-area {
+    width: 100%;
+    background: transparent;
+    border-radius: 4px;
+    /* Adjust max-height if you want some margin from screen edges */
+    max-height: 90vh;
+}
+
+/* Universal image styles inside scroll area */
+.cert-scroll-area img {
+    display: block;
+    border-radius: 4px;
+}
+
+/* MODE: SCROLL */
+.cert-scroll-area.mode-scroll {
+    overflow-y: auto;
+    /* Scrollbar styling for webkit */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.cert-scroll-area.mode-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.cert-scroll-area.mode-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.cert-scroll-area.mode-scroll img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* MODE: FIT */
+.cert-scroll-area.mode-fit {
+    overflow: hidden;
+    /* No scrollbars needed if fitting */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    /* Force container height to available space */
+}
+
+.cert-scroll-area.mode-fit img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

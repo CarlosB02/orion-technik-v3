@@ -1,0 +1,1 @@
+placeholder only, using this tool to create the directory if it doesn't exist technically, but here I just want to ensure things are ready. Wait, I should not use write_to_file to move files. I will use run_command or just read it. The image is already in the brain. I need to move it to src/assets.

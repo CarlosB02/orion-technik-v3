@@ -1,0 +1,95 @@
+.footer {
+    background-color: #3b5c6b;
+    /* Matching News section for seamless look or slightly darker? Image implies same tone */
+    color: white;
+    padding: 0 1rem 4rem;
+    /* Match side padding of contact section */
+    border-top: none;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    /* Reduced gap to fit in 800px */
+    max-width: 800px;
+    /* Match contact form width */
+    margin: 0 auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 3rem;
+    width: 100%;
+}
+
+.footer-logo-img {
+    height: 80px;
+    /* Increased logo size */
+    width: auto;
+    margin-bottom: 0;
+    filter: brightness(0) invert(1);
+    /* Make logo monochromatic white */
+}
+
+.footer-column h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+    color: #a8d5e2;
+    /* Suggesting a light accent color for headers or keep white? Image text looks white/grey. Let's keep white but maybe slightly dimmed. */
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-column p {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+.contact-block {
+    margin-bottom: 1.5rem;
+}
+
+.contact-block:last-child {
+    margin-bottom: 0;
+}
+
+.footer-social-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+}
+
+.footer-social-link:hover {
+    opacity: 0.8;
+}
+
+.footer-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.footer-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

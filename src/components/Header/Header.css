@@ -1,0 +1,117 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    z-index: 1000;
+    color: white;
+    background-color: var(--color-bg-dark);
+    transition: transform 0.3s ease-in-out;
+}
+
+.header--hidden {
+    transform: translateY(-100%);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    margin-bottom: 5px;
+    filter: brightness(0) invert(1);
+    /* Make logo monochromatic white */
+}
+
+.nav ul {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav a {
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    transition: opacity 0.3s;
+}
+
+.nav a:hover {
+    opacity: 0.8;
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -4px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem 5%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .logo {
+        align-items: flex-start;
+        font-size: 1rem;
+    }
+
+    .logo-img {
+        height: 30px;
+        margin-bottom: 0;
+        margin-right: 0.5rem;
+    }
+
+    /* Optional: If the logo text "ORION TECHNIK" is separate, we might need to adjust .logo structure 
+       but based on previous CSS, it seems .logo contains the image and text is likely part of the image or separate?
+       Ah, looking at Header.jsx:
+       <div className="logo"> <Link...> <img ... /> </Link> </div>
+       There is no text "ORION TECHNIK" in the JSX?
+       Wait, looking at JSX:
+       <div className="logo">
+           <Link to="/">
+               <img src={logo} alt="Orion Technik Logo" className="logo-img" />
+           </Link>
+       </div>
+       If the Image *contains* the text, then `align-items: flex-start` on `.logo` might not do much if it's just an image.
+       But in the screenshot, "ORION TECHNIK" is under the icon.
+       Maybe the `logo` import is just the icon and text is missing in JSX?
+       OR the `logo.png` includes the text.
+    */
+
+    .nav ul {
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+
+    .nav a {
+        font-size: 0.75rem;
+        /* Reduce size to fit on small screens */
+        white-space: nowrap;
+    }
+}

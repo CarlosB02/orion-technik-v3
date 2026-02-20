@@ -1,0 +1,125 @@
+.news {
+    padding: 5rem 10%;
+    background-color: var(--color-bg-dark);
+    /* Distinct slate blue/green from image */
+    color: white;
+    text-align: center;
+}
+
+.news-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    text-align: left;
+}
+
+.news-item {
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.news-image-container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.news-item:hover .news-image {
+    transform: scale(1.05);
+}
+
+.news-content {
+    flex-grow: 1;
+}
+
+.news-item h3 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.news-link {
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.news-link:hover {
+    opacity: 1;
+}
+
+.small-text {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .news {
+        padding: 4rem 5%;
+    }
+
+    .news-title {
+        font-size: 2rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .news-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        /* Space for scrollbar */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+        scrollbar-width: none;
+        /* Hide scrollbar Firefox */
+    }
+
+    .news-grid::-webkit-scrollbar {
+        display: none;
+        /* Hide scrollbar Chrome/Safari */
+    }
+
+    .news-item {
+        flex: 0 0 85%;
+        /* Show 85% of the card to peek the next one */
+        width: 85%;
+        margin-bottom: 0;
+        scroll-snap-align: center;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+        /* Ensure border is visible */
+        background: rgba(255, 255, 255, 0.02);
+        /* Slight background to distinguish cards */
+        border-radius: 8px;
+        /* Rounded corners */
+        padding: 1rem;
+        /* Internal padding */
+    }
+}
