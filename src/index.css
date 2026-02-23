@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --font-main: 'Space Grotesk', sans-serif;
-  --color-bg-dark: #3d5e6b;
+  --font-main: 'Space Grotesk', Helvetica, Arial, Lucida, sans-serif;
+  --color-primary: #3d5e6b;
+  --color-secondary: #c3c8b3;
+  --color-bg-dark: var(--color-primary);
   /* Main Blue */
   --color-text-white: #ffffff;
   --color-accent: rgba(255, 255, 255, 0.1);

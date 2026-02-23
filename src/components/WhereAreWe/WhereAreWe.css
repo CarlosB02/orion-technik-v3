@@ -1,0 +1,508 @@
+/* ── Where Are We Page ── */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+.waw-page {
+    font-family: 'Space Grotesk', Helvetica, Arial, Lucida, sans-serif;
+}
+
+.waw-container {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* ── HERO ── */
+.waw-hero {
+    position: relative;
+    min-height: 52vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #3d5e6b;
+}
+
+.waw-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 70% 80% at 70% 50%, rgba(14, 80, 130, 0.45) 0%, transparent 70%),
+        linear-gradient(160deg, #0c1e2b 0%, #0d2f47 60%, #091929 100%);
+}
+
+.waw-hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.waw-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 6rem 6% 5rem;
+    max-width: 750px;
+}
+
+.waw-hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0.5rem 0 1rem;
+}
+
+.waw-hero-content p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.65;
+    max-width: 520px;
+    font-weight: 400;
+}
+
+/* ── MAP SECTION ── */
+.waw-maps {
+    background: #fff;
+    padding: 64px 0 80px;
+}
+
+/* Tabs */
+.waw-tabs {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #e6edf5;
+    padding-bottom: 8px;
+    margin-bottom: 28px;
+}
+
+.waw-tab {
+    appearance: none;
+    border: 1px solid #e1e6ea;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1b2e5a;
+    transition: transform 0.15s, box-shadow 0.2s, color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.waw-tab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(12, 33, 70, 0.08);
+}
+
+.waw-tab.is-active {
+    border-color: #3D5E6B;
+    color: #fff;
+    background: linear-gradient(180deg, #3D5E6B, #4f7382);
+}
+
+/* Map wrap: map + sidebar */
+.waw-mapwrap {
+    display: grid;
+    grid-template-columns: 1.5fr 0.9fr;
+    gap: 24px;
+    align-items: start;
+    animation: wawFadeIn 0.3s ease;
+}
+
+@keyframes wawFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.waw-map {
+    background: #fff;
+    border: 1px solid #e6edf5;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(12, 33, 70, 0.08);
+    margin: 0;
+    padding: 16px;
+}
+
+.waw-map-plate {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+/* Zoom stage */
+.waw-zoom-stage {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: grab;
+    touch-action: none;
+}
+
+.waw-zoom-stage:active {
+    cursor: grabbing;
+}
+
+.waw-zoom-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: block;
+    transform-origin: 0 0;
+    will-change: transform;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Zoom controls */
+.waw-zoom-controls {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.waw-zoom-btn {
+    appearance: none;
+    border: 1px solid #e1e6ea;
+    background: #fff;
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    color: #1b2e5a;
+    box-shadow: 0 4px 12px rgba(12, 33, 70, 0.08);
+    transition: transform 0.15s, border-color 0.2s;
+}
+
+.waw-zoom-btn:hover {
+    transform: translateY(-1px);
+    border-color: #3D5E6B;
+}
+
+/* Side panel */
+.waw-side {
+    align-self: flex-start;
+    background: #3D5E6B;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(12, 33, 70, 0.12);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.waw-side-title {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.waw-side-body {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.waw-side-metrics {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.waw-side-metrics li {
+    background: #fff;
+    border: 1px solid #e6edf5;
+    border-radius: 12px;
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.waw-side-metrics strong {
+    font-size: 1.2rem;
+    display: block;
+    color: #0c2146;
+    margin-bottom: 2px;
+}
+
+.waw-side-metrics span {
+    color: #5d6b7a;
+    font-size: 0.82rem;
+}
+
+/* ── FLAG MARQUEE ── */
+.waw-countries {
+    background: #f5f7fa;
+    padding: 56px 0;
+    overflow: hidden;
+}
+
+.waw-marquee {
+    position: relative;
+    overflow: hidden;
+    padding: 6px 0;
+}
+
+.waw-marquee::before,
+.waw-marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.waw-marquee::before {
+    left: 0;
+    background: linear-gradient(to right, #f5f7fa 0%, transparent 100%);
+}
+
+.waw-marquee::after {
+    right: 0;
+    background: linear-gradient(to left, #f5f7fa 0%, transparent 100%);
+}
+
+.waw-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    width: max-content;
+    animation: wawMarquee 38s linear infinite;
+    will-change: transform;
+}
+
+.waw-row.r2 {
+    animation-duration: 34s;
+    animation-direction: reverse;
+}
+
+@keyframes wawMarquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.waw-flag-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid rgba(61, 94, 107, 0.3);
+    border-radius: 14px;
+    padding: 10px 14px;
+    min-height: 52px;
+    flex-shrink: 0;
+    cursor: default;
+    transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.waw-flag-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(12, 33, 70, 0.12);
+    border-color: #3D5E6B;
+}
+
+.waw-flag-card img {
+    width: 28px;
+    height: auto;
+    border-radius: 3px;
+    flex-shrink: 0;
+}
+
+.waw-flag-card>span {
+    font-weight: 600;
+    font-size: 0.92rem;
+    white-space: nowrap;
+    color: #3D5E6B;
+}
+
+/* ── CONTACT FORM ── */
+.waw-contact {
+    background: linear-gradient(160deg, #0c1e2b 0%, #0d2f47 100%);
+    padding: 96px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.waw-contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+}
+
+.waw-contact-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+}
+
+.waw-contact-text h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+    font-weight: 700;
+    color: white;
+    margin: 0.75rem 0 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.waw-contact-text p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.7;
+}
+
+.waw-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.waw-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.waw-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.waw-field label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.waw-field input,
+.waw-field textarea {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: white;
+    outline: none;
+    transition: border-color 0.25s, background 0.25s;
+    resize: none;
+}
+
+.waw-field input::placeholder,
+.waw-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.waw-field input:focus,
+.waw-field textarea:focus {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+.waw-submit {
+    align-self: flex-start;
+    padding: 13px 30px;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    color: #3d5e6b;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.waw-submit:hover {
+    background: #e8f0f5;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.waw-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.waw-success span {
+    font-size: 2.5rem;
+    color: #6dd9a8;
+}
+
+.waw-success p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 980px) {
+    .waw-mapwrap {
+        grid-template-columns: 1fr;
+    }
+
+    .waw-contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .waw-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .waw-hero-content h1 {
+        font-size: 2.4rem;
+    }
+
+    .waw-side-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .waw-row {
+        animation: none !important;
+        transform: none !important;
+    }
+}

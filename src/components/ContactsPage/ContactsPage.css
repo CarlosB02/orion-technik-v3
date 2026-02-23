@@ -1,0 +1,366 @@
+/* ── Contacts Page Styles ── */
+
+.contacts-page {
+    background: #030a12;
+    color: #fff;
+    min-height: 100vh;
+    font-family: 'Space Grotesk', Helvetica, Arial, Lucida, sans-serif;
+}
+
+.cnt-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* ── HERO ── */
+.cnt-hero {
+    position: relative;
+    padding: 10rem 0 6rem;
+    overflow: hidden;
+    background: #010409;
+}
+
+.cnt-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background: url('https://www.transparenttextures.com/patterns/world-map.png') center/contain no-repeat;
+    pointer-events: none;
+}
+
+.cnt-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 100% 0%, rgba(61, 94, 107, 0.3) 0%, transparent 60%);
+    z-index: 1;
+}
+
+.cnt-hero-txt {
+    position: relative;
+    z-index: 2;
+}
+
+.cnt-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 1.5rem 0 1rem;
+    color: #fff;
+}
+
+.cnt-hero p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 550px;
+    line-height: 1.6;
+}
+
+/* ── MAIN GRID ── */
+.cnt-hub {
+    padding: 4rem 0 8rem;
+    background: linear-gradient(to bottom, #010409, #030a12);
+}
+
+.cnt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 100px;
+    align-items: start;
+}
+
+.cnt-sect-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #c3c8b3;
+    margin-bottom: 2rem;
+}
+
+/* Offices */
+.office-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.office-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.office-card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(125, 184, 204, 0.3);
+    transform: translateX(10px);
+}
+
+.office-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.office-region {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+}
+
+.office-type {
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    background: rgba(61, 94, 107, 0.2);
+    color: #c3c8b3;
+    border-radius: 6px;
+}
+
+.office-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #f9fafb;
+}
+
+.office-addr {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.office-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.office-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.office-links a:hover {
+    color: #c3c8b3;
+}
+
+.office-links svg {
+    width: 16px;
+    height: 16px;
+    opacity: 0.5;
+}
+
+/* Support Box */
+.cnt-support-box {
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(61, 94, 107, 0.1), transparent);
+    border: 1px dashed rgba(61, 94, 107, 0.3);
+    border-radius: 20px;
+}
+
+.cnt-support-box h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.cnt-support-box p {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.cnt-aog-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #fff;
+    color: #010409;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.cnt-aog-btn:hover {
+    background: #c3c8b3;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ── FORM ── */
+.cnt-form-card {
+    background: #fff;
+    color: #010409;
+    border-radius: 32px;
+    padding: 50px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
+}
+
+.cnt-form-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 35px;
+    letter-spacing: -0.02em;
+}
+
+.cnt-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.cnt-input-group {
+    margin-bottom: 24px;
+}
+
+.cnt-input-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+}
+
+.cnt-input-group input,
+.cnt-input-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #0f172a;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.cnt-input-group input:focus,
+.cnt-input-group textarea:focus {
+    border-color: #3d5e6b;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(61, 94, 107, 0.1);
+}
+
+.cnt-submit-btn {
+    all: unset;
+    cursor: pointer;
+    width: 100%;
+    background: #010409;
+    color: #fff;
+    padding: 18px;
+    border-radius: 14px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+.cnt-submit-btn:hover:not(:disabled) {
+    background: #3d5e6b;
+    transform: translateY(-2px);
+}
+
+.cnt-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Success State */
+.cnt-success {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.success-icon {
+    width: 64px;
+    height: 64px;
+    background: #ecfdf5;
+    color: #10b981;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 24px;
+}
+
+.cnt-success h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.cnt-success p {
+    color: #64748b;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.cnt-reset-btn {
+    all: unset;
+    cursor: pointer;
+    color: #3d5e6b;
+    font-weight: 700;
+    border-bottom: 2px solid #3d5e6b;
+    padding-bottom: 2px;
+}
+
+/* Simple Footer */
+.cnt-simple-footer {
+    padding: 3rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+}
+
+.cnt-simple-footer p {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+    .cnt-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+}
+
+@media (max-width: 640px) {
+    .cnt-form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .cnt-form-card {
+        padding: 30px 20px;
+    }
+
+    .cnt-hero {
+        padding-top: 8rem;
+    }
+}
