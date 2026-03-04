@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../assets/orion-logo-new.png';
 import heroBg from '../../assets/hero-hangar-wide.png';
 import cardImg1 from '../../assets/hero-bg-creative.png';
 import cardImg2 from '../../assets/hero-atr.png';
 import cardImg3 from '../../assets/hero-bizjet.png';
 import cardImg4 from '../../assets/hero-bizjet-sunset.png';
+import videoHero from '../../assets/Orion video.mp4';
 import './Design2.css';
 import Footer from '../Footer/Footer';
+import D2ContactSection from './D2ContactSection';
+import D2Header from './D2Header';
 
 /* ── Intersection Observer hook for scroll animations ── */
 const useFadeIn = () => {
@@ -251,15 +252,6 @@ const CertCarousel = ({ items }) => {
 
 /* ── Component ── */
 const Design2 = () => {
-    const [scrolled, setScrolled] = useState(false);
-    const [mobileNav, setMobileNav] = useState(false);
-
-    useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 60);
-        window.addEventListener('scroll', onScroll);
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
-
     // Refs for fade-in sections
     const showcaseRef = useFadeIn();
     const svcRef = useFadeIn();
@@ -268,43 +260,31 @@ const Design2 = () => {
     const contactRef = useFadeIn();
 
     const scrollTo = (id) => {
-        setMobileNav(false);
         document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
         <div className="d2-page">
             {/* ── HEADER ── */}
-            <header className={`d2-header ${scrolled ? 'd2-header--scrolled' : ''}`}>
-                <div className="d2-header-logo">
-                    <Link to="/"><img src={logo} alt="Orion Technik" /></Link>
-                </div>
-
-                <ul className={`d2-header-nav ${mobileNav ? 'd2-nav-open' : ''}`}>
-                    <li><Link to="/capabilities">Capabilities</Link></li>
-                    <li><Link to="/quality">Quality</Link></li>
-                    <li><Link to="/news-page">News</Link></li>
-                    <li><Link to="/where-are-we">Where Are We</Link></li>
-                    <li><Link to="/contacts">Contacts</Link></li>
-                </ul>
-
-                <button className="d2-hamburger" onClick={() => setMobileNav(!mobileNav)} aria-label="Toggle menu">
-                    <span /><span /><span />
-                </button>
-            </header>
+            <D2Header activePage="home" />
 
             {/* ── HERO ── */}
             <section className="d2-hero" id="hero">
-                <div className="d2-hero-bg" style={{ backgroundImage: `url(${heroBg})` }} />
+                <div className="d2-hero-bg">
+                    <video
+                        src={videoHero}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="d2-hero-video"
+                    />
+                </div>
                 <div className="d2-hero-content">
                     <h1>
                         <span>Your Security?</span>
                         <span>Our Priority!</span>
                     </h1>
-                    <h2>Precision Engineering for Performance</h2>
-                    <a href="#services" onClick={(e) => { e.preventDefault(); scrollTo('services'); }} className="d2-hero-cta">
-                        Discover Our Services <Icons.ArrowRight />
-                    </a>
                 </div>
                 <div className="d2-hero-scroll-indicator">
                     <span>Scroll</span>
@@ -328,7 +308,7 @@ const Design2 = () => {
             {/* ── TRUST / CERTIFICATIONS ── */}
             <section className="d2-trust" id="trust">
                 <div className="d2-fade-in" ref={trustRef}>
-                    <span className="d2-section-label">Compliance &amp; Trust</span>
+                    <span className="d2-section-label">Certifications</span>
                     <h2 className="d2-section-title">Certified Excellence</h2>
                     <p className="d2-section-subtitle">Meeting and exceeding the most rigorous international standards in aerospace quality and safety.</p>
 
@@ -346,7 +326,7 @@ const Design2 = () => {
                     <div className="d2-partners-marquee-outer">
                         {/* Duplicate for seamless loop */}
                         <div className="d2-partners-marquee-track">
-                            {[...partnerLogos, ...partnerLogos].map((p, i) => (
+                            {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((p, i) => (
                                 <div className="d2-partner-logo-item" key={i}>
                                     <img src={p.src} alt={p.name} />
                                 </div>
@@ -357,66 +337,7 @@ const Design2 = () => {
             </section>
 
             {/* ── CONTACT ── */}
-            <section className="d2-contact" id="contact">
-                <div className="d2-fade-in" ref={contactRef}>
-                    <div className="d2-contact-inner">
-                        <div className="d2-contact-info">
-                            <span className="d2-section-label">Get In Touch</span>
-                            <h2>Let's Work Together</h2>
-                            <p>Whether you need repair services, supply chain solutions, or technical support — our team is ready to assist you.</p>
-
-                            <div className="d2-contact-detail">
-                                <div className="d2-contact-detail-icon"><Icons.Phone /></div>
-                                <div className="d2-contact-detail-text">
-                                    <h4>Phone</h4>
-                                    <p><a href="tel:+35621000000">+356 21 000 000</a></p>
-                                </div>
-                            </div>
-
-                            <div className="d2-contact-detail">
-                                <div className="d2-contact-detail-icon"><Icons.Mail /></div>
-                                <div className="d2-contact-detail-text">
-                                    <h4>Email</h4>
-                                    <p><a href="mailto:Info@orionaviation.eu">Info@orionaviation.eu</a></p>
-                                </div>
-                            </div>
-
-                            <div className="d2-contact-detail">
-                                <div className="d2-contact-detail-icon"><Icons.MapPin /></div>
-                                <div className="d2-contact-detail-text">
-                                    <h4>Address</h4>
-                                    <p>Northlink Business Centre, Level 2<br />Burmarrad Road, Naxxar, Malta</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="d2-contact-form">
-                            <h3>Send a Message</h3>
-                            <form onSubmit={(e) => e.preventDefault()}>
-                                <div className="d2-form-group">
-                                    <label htmlFor="d2-name">Name</label>
-                                    <input type="text" id="d2-name" placeholder="Your full name" />
-                                </div>
-                                <div className="d2-form-group">
-                                    <label htmlFor="d2-email">Email</label>
-                                    <input type="email" id="d2-email" placeholder="your@email.com" />
-                                </div>
-                                <div className="d2-form-group">
-                                    <label htmlFor="d2-subject">Subject</label>
-                                    <input type="text" id="d2-subject" placeholder="How can we help?" />
-                                </div>
-                                <div className="d2-form-group">
-                                    <label htmlFor="d2-message">Message</label>
-                                    <textarea id="d2-message" placeholder="Tell us about your project..." />
-                                </div>
-                                <button type="submit" className="d2-submit-btn">
-                                    Send Message <Icons.Send />
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <D2ContactSection />
 
             {/* ── CLOSING STATEMENT ── */}
             <section className="d2-closing">

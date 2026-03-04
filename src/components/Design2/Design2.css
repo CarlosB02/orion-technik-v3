@@ -5,8 +5,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* ── Page Root ── */
-.d2-page {
+/* ── CSS Variables (global – used by D2ContactSection on all pages) ── */
+:root {
     --d2-blue: #3d5e6b;
     --d2-blue-light: #527d8e;
     --d2-blue-accent: #c3c8b3;
@@ -15,7 +15,10 @@
     --d2-dark-text: #111827;
     --d2-white: #ffffff;
     --d2-font: 'Space Grotesk', Helvetica, Arial, Lucida, sans-serif;
+}
 
+/* ── Page Root ── */
+.d2-page {
     font-family: var(--d2-font);
     background: var(--d2-white);
     color: var(--d2-dark-text);
@@ -58,7 +61,6 @@
 .d2-header-logo img {
     height: 45px;
     width: auto;
-    filter: brightness(0) invert(1);
     transition: height 0.3s ease;
 }
 
@@ -102,6 +104,14 @@
     opacity: 0.9;
 }
 
+.d2-header-nav a.d2-nav-active {
+    opacity: 1;
+}
+
+.d2-header-nav a.d2-nav-active::after {
+    width: 100%;
+}
+
 /* Mobile hamburger */
 .d2-hamburger {
     display: none;
@@ -136,10 +146,14 @@
 .d2-hero-bg {
     position: absolute;
     inset: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
     z-index: 0;
+}
+
+.d2-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
 }
 
 .d2-hero-bg::after {
@@ -284,7 +298,6 @@
     color: white;
     margin-bottom: 3.5rem;
     letter-spacing: -0.01em;
-    font-style: italic;
     position: relative;
     z-index: 1;
 }
@@ -297,8 +310,7 @@
     margin: 0 auto;
     position: relative;
     z-index: 1;
-    /* Stagger heights for visual rhythm */
-    align-items: start;
+    align-items: stretch;
 }
 
 /* ── Video Cards ── */
@@ -307,28 +319,8 @@
     border-radius: 18px;
     overflow: hidden;
     cursor: pointer;
-    height: 380px;
+    aspect-ratio: 1 / 1;
     transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease;
-}
-
-/* Stagger card heights for visual interest */
-.d2-vcard--0 {
-    height: 360px;
-}
-
-.d2-vcard--1 {
-    height: 400px;
-    margin-top: 20px;
-}
-
-.d2-vcard--2 {
-    height: 380px;
-    margin-top: 5px;
-}
-
-.d2-vcard--3 {
-    height: 370px;
-    margin-top: 15px;
 }
 
 .d2-vcard:hover {
@@ -454,11 +446,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .d2-vcard--0,
-    .d2-vcard--1,
-    .d2-vcard--2,
-    .d2-vcard--3 {
-        height: 320px;
+    .d2-vcard {
         margin-top: 0;
     }
 }
@@ -473,11 +461,7 @@
         gap: 1rem;
     }
 
-    .d2-vcard--0,
-    .d2-vcard--1,
-    .d2-vcard--2,
-    .d2-vcard--3 {
-        height: 280px;
+    .d2-vcard {
         margin-top: 0;
     }
 }
@@ -797,6 +781,7 @@
 .d2-partners-marquee-outer {
     position: relative;
     overflow: hidden;
+    padding: 2.5rem 0;
     /* Fade edges */
     mask-image: linear-gradient(90deg,
             transparent 0%,
@@ -828,7 +813,7 @@
     }
 
     100% {
-        transform: translateX(-50%);
+        transform: translateX(-25%);
     }
 }
 
@@ -838,7 +823,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem 3.5rem;
+    padding: 1.5rem 4rem;
     margin: 0 0.5rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.04);
@@ -855,9 +840,9 @@
 }
 
 .d2-partner-logo-item img {
-    height: 48px;
+    height: 80px;
     width: auto;
-    max-width: 180px;
+    max-width: 240px;
     object-fit: contain;
     /* Start grayscale, go color on hover */
     filter: grayscale(100%) brightness(1.6);
@@ -880,8 +865,8 @@
     }
 
     .d2-partner-logo-item img {
-        height: 36px;
-        max-width: 130px;
+        height: 48px;
+        max-width: 170px;
     }
 }
 
@@ -1021,21 +1006,22 @@
 }
 
 .d2-submit-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 1rem 2.5rem;
+    padding: 0.85rem 2rem;
     background: var(--d2-blue);
     color: white;
     border: none;
     border-radius: 50px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 700;
     font-family: var(--d2-font);
     cursor: pointer;
     transition: all 0.35s ease;
-    width: 100%;
-    justify-content: center;
+    width: fit-content;
+    margin-left: 0;
+    white-space: nowrap;
     margin-top: 0.5rem;
 }
 
@@ -1043,6 +1029,16 @@
     background: var(--d2-blue-light);
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(12, 35, 64, 0.25);
+}
+
+.d2-submit-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s;
+}
+
+.d2-submit-btn:hover svg {
+    transform: translateX(3px) rotate(-10deg);
 }
 
 /* ── CLOSING STATEMENT ── */

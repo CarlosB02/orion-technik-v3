@@ -1,7 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './Capabilities.css';
 import Footer from '../Footer/Footer';
+import D2ContactSection from '../Design2/D2ContactSection';
+import D2Header from '../Design2/D2Header';
+
+/* ── Imagem de Background do Hero (Local / Dispositivo) ── */
+// 1. Coloque a sua imagem na pasta: src/assets/
+// 2. Importe a imagem abaixo alterando o nome do ficheiro (ex: 'minha-foto.jpg')
+import HERO_BG_IMAGE from '../../assets/hero-bg-v2.webp';
+
+/* ── Imagens Reais de Aviões para as Cartas ── */
+import FLEET_MILITARY from '../../assets/hero-bizjet-sunset.png';
+import FLEET_CIVIL from '../../assets/hero-atr.png';
+import FLEET_ROTARY from '../../assets/hero-bizjet.png';
+import FLEET_ENGINE from '../../assets/hero-hangar-wide.png';
 
 /* ── Hotspot capability data ── */
 const capabilities = [
@@ -48,6 +60,7 @@ const fleetCategories = [
                 <circle cx="32" cy="12" r="3" />
             </svg>
         ),
+        image: FLEET_MILITARY,
     },
     {
         title: 'Fixed Wing \u2013 Civil',
@@ -57,6 +70,7 @@ const fleetCategories = [
                 <rect x="28" y="8" width="8" height="6" rx="2" />
             </svg>
         ),
+        image: FLEET_CIVIL,
     },
     {
         title: 'Rotary Wing',
@@ -68,6 +82,7 @@ const fleetCategories = [
                 <path d="M26 42l-8 14h28l-8-14" />
             </svg>
         ),
+        image: FLEET_ROTARY,
     },
     {
         title: 'Engine & Propulsion System',
@@ -78,6 +93,7 @@ const fleetCategories = [
                 <path d="M32 18v-8M32 54v-8M18 32h-8M54 32h-8M22 22l-5-5M47 47l-5-5M42 22l5-5M17 47l5-5" />
             </svg>
         ),
+        image: FLEET_ENGINE,
     },
 ];
 
@@ -85,32 +101,23 @@ const fleetCategories = [
 const Capabilities = () => {
     const [activeCap, setActiveCap] = useState('Antennas');
     const [openAccordion, setOpenAccordion] = useState(null);
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [sent, setSent] = useState(false);
 
     const currentCap = capabilities.find(c => c.id === activeCap) || capabilities[0];
-
     const toggleAccordion = (i) => setOpenAccordion(openAccordion === i ? null : i);
-    const handleSubmit = (e) => { e.preventDefault(); setSent(true); };
+
 
     return (
         <div className="cap-page caps-page">
 
             {/* ── HEADER ── */}
-            <header className="cap-header">
-                <Link to="/design2" className="cap-back">&larr; Orion Technik</Link>
-                <nav className="cap-nav">
-                    <Link to="/capabilities" className="cap-nav--active">Capabilities</Link>
-                    <Link to="/quality">Quality</Link>
-                    <Link to="/news-page">News</Link>
-                    <Link to="/where-are-we">Where Are We</Link>
-                    <Link to="/contacts">Contacts</Link>
-                </nav>
-            </header>
+            <D2Header activePage="capabilities" />
 
             {/* ── HERO ── */}
             <section className="caps-hero">
-                <div className="caps-hero-bg" />
+                <div
+                    className="caps-hero-bg"
+                    style={HERO_BG_IMAGE ? { backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                />
                 <div className="caps-hero-content">
                     <span className="cap-label">What We Do</span>
                     <h1>Engineering.<br />Repair.<br />Performance.</h1>
@@ -203,11 +210,11 @@ const Capabilities = () => {
                 </div>
             </section>
 
-            {/* ── SUPPORTED FLEET ── */}
+            {/* ── SUPPORTED FLEET (OPTION 1) ── */}
             <section className="caps-fleet">
                 <div className="caps-container">
                     <span className="cap-label">Aircraft</span>
-                    <h2 className="caps-fleet-heading">Supported Fleet</h2>
+                    <h2 className="caps-fleet-heading">Supported Fleet (Option 1)</h2>
                     <p className="caps-fleet-sub">
                         With a long experience and relationship with lead repair stations combined with our in-house repair capabilities,
                         at Orion Technik we deliver a worldwide repair solution from Defence to Civil aviation on fixed and rotary wing aircraft.
@@ -216,55 +223,54 @@ const Capabilities = () => {
                     <div className="caps-fleet-grid">
                         {fleetCategories.map((cat, i) => (
                             <div className="caps-fleet-card" key={i}>
-                                <div className="caps-fleet-icon">
-                                    {cat.icon}
+                                <div className="caps-fleet-card-bg" style={{ backgroundImage: `url(${cat.image})` }}></div>
+                                <div className="caps-fleet-card-content">
+                                    <div className="caps-fleet-icon">
+                                        {cat.icon}
+                                    </div>
+                                    <h4>{cat.title}</h4>
                                 </div>
-                                <h4>{cat.title}</h4>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* ── CONTACT FORM ── */}
-            <section className="caps-contact">
-                <div className="caps-container caps-contact-inner">
-                    <div className="caps-contact-text">
-                        <span className="cap-label">Get In Touch</span>
-                        <h2>Need repair or engineering support?</h2>
-                        <p>Our team is ready to discuss your requirements and deliver tailored solutions.</p>
-                    </div>
-                    <form className="caps-form" onSubmit={handleSubmit}>
-                        {sent ? (
-                            <div className="caps-success">
-                                <span>&#10003;</span>
-                                <p>Message sent! We'll be in touch shortly.</p>
+            {/* ── SUPPORTED FLEET (OPTION 2 - CREATIVE ASTHETIC) ── */}
+            <section className="caps-fleet-v2">
+                <div className="caps-container">
+                    <span className="cap-label">Aircraft</span>
+                    <h2 className="caps-fleet-heading">Supported Fleet (Option 2)</h2>
+                    <p className="caps-fleet-sub">
+                        Alternative creative layout for the supported fleet using diagonal shapes,
+                        dynamic masking, and offset hover reveals.
+                    </p>
+
+                    <div className="caps-fleet-v2-grid">
+                        {fleetCategories.map((cat, i) => (
+                            <div className="caps-fleet-v2-card" key={`v2-${i}`}>
+                                <div className="v2-card-img-shell" style={{ backgroundImage: `url(${cat.image})` }}>
+                                    <div className="v2-card-overlay"></div>
+                                </div>
+
+                                <div className="v2-card-data">
+                                    <div className="v2-icon-wrap">
+                                        {cat.icon}
+                                    </div>
+                                    <div className="v2-text-wrap">
+                                        <h4>{cat.title}</h4>
+                                        <div className="v2-line"></div>
+                                        <p className="v2-discover">View Details &rarr;</p>
+                                    </div>
+                                </div>
+                                <div className="v2-card-border-fx"></div>
                             </div>
-                        ) : (
-                            <>
-                                <div className="caps-form-row">
-                                    <div className="caps-field">
-                                        <label htmlFor="caps-name">Name</label>
-                                        <input id="caps-name" type="text" placeholder="Your name" value={formData.name}
-                                            onChange={e => setFormData({ ...formData, name: e.target.value })} required />
-                                    </div>
-                                    <div className="caps-field">
-                                        <label htmlFor="caps-email">Email</label>
-                                        <input id="caps-email" type="email" placeholder="your@email.com" value={formData.email}
-                                            onChange={e => setFormData({ ...formData, email: e.target.value })} required />
-                                    </div>
-                                </div>
-                                <div className="caps-field">
-                                    <label htmlFor="caps-msg">Message</label>
-                                    <textarea id="caps-msg" rows={5} placeholder="How can we help you?" value={formData.message}
-                                        onChange={e => setFormData({ ...formData, message: e.target.value })} required />
-                                </div>
-                                <button type="submit" className="caps-submit">Send Message &rarr;</button>
-                            </>
-                        )}
-                    </form>
+                        ))}
+                    </div>
                 </div>
             </section>
+
+            <D2ContactSection />
             <Footer />
         </div>
     );

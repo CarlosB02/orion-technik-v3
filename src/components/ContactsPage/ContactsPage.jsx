@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../Capabilities/Capabilities.css';
 import './ContactsPage.css';
 import Footer from '../Footer/Footer';
+import D2Header from '../Design2/D2Header';
+
+/* ── Imagem de Background do Hero (Local / Dispositivo) ── */
+// 1. Coloque a sua imagem na pasta: src/assets/
+// 2. Importe a imagem abaixo alterando o nome do ficheiro (ex: 'minha-foto.jpg')
+import HERO_BG_IMAGE from '../../assets/hero_contacts_image.webp';
 
 const offices = [
     {
@@ -43,20 +48,14 @@ const ContactsPage = () => {
 
     return (
         <div className="contacts-page">
-            <header className="cap-header">
-                <Link to="/design2" className="cap-back">← Orion Technik</Link>
-                <nav className="cap-nav">
-                    <Link to="/capabilities">Capabilities</Link>
-                    <Link to="/quality">Quality</Link>
-                    <Link to="/news-page">News</Link>
-                    <Link to="/where-are-we">Where Are We</Link>
-                    <Link to="/contacts" className="cap-nav--active">Contacts</Link>
-                </nav>
-            </header>
+            <D2Header activePage="contacts" />
 
             <main className="cnt-main">
                 {/* HERO SECTION */}
-                <section className="cnt-hero">
+                <section
+                    className="cnt-hero"
+                    style={HERO_BG_IMAGE ? { backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'top' } : {}}
+                >
                     <div className="cnt-hero-overlay" />
                     <div className="cnt-container">
                         <div className="cnt-hero-txt">
@@ -169,6 +168,20 @@ const ContactsPage = () => {
 
                         </div>
                     </div>
+                </section>
+
+                {/* MAP SECTION */}
+                <section className="cnt-map-section">
+                    <iframe
+                        title="Orion Technik Location"
+                        src="https://maps.google.com/maps?q=Aeroh%C3%A9lice,+Caminho+do+Parrau,+10+Zona+Industrial+das+Corredoras,+2630-369+Arruda+dos+Vinhos,+Portugal&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="450"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                 </section>
             </main>
             <Footer />

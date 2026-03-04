@@ -188,20 +188,36 @@
     width: 100%;
     border: 1px solid #e8ecef;
     border-radius: 12px;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
     background: #fafafa;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     min-height: 400px;
     max-height: 560px;
 }
 
+/* Custom Scrollbar for the image container */
+.qlt-card-img::-webkit-scrollbar {
+    width: 8px;
+}
+
+.qlt-card-img::-webkit-scrollbar-track {
+    background: #fafafa;
+    border-radius: 12px;
+}
+
+.qlt-card-img::-webkit-scrollbar-thumb {
+    background-color: #c5d3e0;
+    border-radius: 4px;
+}
+
 .qlt-card-img img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;
-    max-height: 560px;
+    height: auto;
+    object-fit: cover;
+    display: block;
 }
 
 .qlt-card-caption {

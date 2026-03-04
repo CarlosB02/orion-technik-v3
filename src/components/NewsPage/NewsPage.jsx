@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../Capabilities/Capabilities.css';
 import './NewsPage.css';
 import Footer from '../Footer/Footer';
+import D2ContactSection from '../Design2/D2ContactSection';
+import D2Header from '../Design2/D2Header';
+
+/* ── Imagem de Background do Hero (Local / Dispositivo) ── */
+// 1. Coloque a sua imagem na pasta: src/assets/
+// 2. Importe a imagem abaixo alterando o nome do ficheiro (ex: 'minha-foto.jpg')
+import HERO_BG_IMAGE from '../../assets/hero-bg-v2.png';
 
 const newsItems = [
     {
@@ -71,19 +77,13 @@ const NewsPage = () => {
 
     return (
         <div className="news-page">
-            <header className="cap-header">
-                <Link to="/design2" className="cap-back">← Orion Technik</Link>
-                <nav className="cap-nav">
-                    <Link to="/capabilities">Capabilities</Link>
-                    <Link to="/quality">Quality</Link>
-                    <Link to="/news-page" className="cap-nav--active">News</Link>
-                    <Link to="/where-are-we">Where Are We</Link>
-                    <Link to="/contacts">Contacts</Link>
-                </nav>
-            </header>
+            <D2Header activePage="news" />
 
             <section className="news-hero">
-                <div className="news-hero-bg" />
+                <div
+                    className="news-hero-bg"
+                    style={HERO_BG_IMAGE ? { backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                />
                 <div className="news-hero-content">
                     <span className="news-badge">Pulse of Orion</span>
                     <h1>Aviation Insight & Intelligence</h1>
@@ -140,19 +140,7 @@ const NewsPage = () => {
                 </div>
             </section>
 
-            <section className="qlt-contact">
-                {/* Reusing Quality contact footer for consistency */}
-                <div className="qlt-container qlt-contact-inner">
-                    <div className="qlt-contact-text">
-                        <span className="cap-label">Press & Media</span>
-                        <h2>Media Relations</h2>
-                        <p>For press inquiries, high-resolution assets, or interview requests with our technical leadership.</p>
-                    </div>
-                    <div className="qlt-form">
-                        <button className="qlt-submit" style={{ width: 'auto' }}>Connect with Media Team →</button>
-                    </div>
-                </div>
-            </section>
+            <D2ContactSection />
             <Footer />
         </div>
     );

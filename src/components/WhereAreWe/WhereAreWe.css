@@ -6,7 +6,7 @@
 }
 
 .waw-container {
-    max-width: 1160px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 5%;
 }
@@ -61,10 +61,23 @@
     font-weight: 400;
 }
 
-/* ── MAP SECTION ── */
+/* ── MAP SECTION (1st section after hero) ── */
 .waw-maps {
-    background: #fff;
-    padding: 64px 0 80px;
+    /* 
+      👉 PARA ADICIONAR UMA FOTO DE BACKGROUND NESTA SECÇÃO:
+      1. Coloque a sua imagem na pasta src/assets/
+      2. Descomente as linhas abaixo e altere o nome do ficheiro!
+    */
+    /* background-image: url('../../assets/a-minha-foto.jpg'); */
+    /* background-color: rgba(255, 255, 255, 0.85); */
+    /* background-blend-mode: overlay; */
+
+    background-color: #fff;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    position: relative;
 }
 
 /* Tabs */
@@ -80,12 +93,12 @@
     appearance: none;
     border: 1px solid #e1e6ea;
     background: #fff;
-    padding: 10px 20px;
+    padding: 14px 28px;
     border-radius: 999px;
     cursor: pointer;
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     color: #1b2e5a;
     transition: transform 0.15s, box-shadow 0.2s, color 0.2s, border-color 0.2s, background 0.2s;
 }
@@ -104,8 +117,8 @@
 /* Map wrap: map + sidebar */
 .waw-mapwrap {
     display: grid;
-    grid-template-columns: 1.5fr 0.9fr;
-    gap: 24px;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 36px;
     align-items: start;
     animation: wawFadeIn 0.3s ease;
 }
@@ -128,40 +141,40 @@
     border-radius: 18px;
     box-shadow: 0 10px 30px rgba(12, 33, 70, 0.08);
     margin: 0;
-    padding: 16px;
+    padding: 24px;
 }
 
 .waw-map-plate {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
-}
-
-/* Zoom stage */
-.waw-zoom-stage {
-    position: absolute;
-    inset: 0;
     overflow: hidden;
     border-radius: 12px;
-    cursor: grab;
-    touch-action: none;
 }
 
-.waw-zoom-stage:active {
-    cursor: grabbing;
-}
-
-.waw-zoom-img {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Composable Map (react-simple-maps) */
+.waw-composable-map {
     width: 100%;
-    height: auto;
-    display: block;
-    transform-origin: 0 0;
-    will-change: transform;
-    user-select: none;
-    pointer-events: none;
+    height: 100%;
+}
+
+.waw-composable-map svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Tooltip */
+.waw-tooltip {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    padding: 6px 14px !important;
+    border-radius: 8px !important;
+    background: #1b2e5a !important;
+    color: #fff !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+    z-index: 100 !important;
+    pointer-events: none !important;
 }
 
 /* Zoom controls */
@@ -170,7 +183,8 @@
     right: 10px;
     bottom: 10px;
     display: flex;
-    gap: 8px;
+    flex-direction: column;
+    gap: 6px;
     z-index: 2;
 }
 
@@ -178,7 +192,11 @@
     appearance: none;
     border: 1px solid #e1e6ea;
     background: #fff;
-    padding: 6px 12px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
     font-weight: 700;
     font-size: 18px;
@@ -186,12 +204,16 @@
     cursor: pointer;
     color: #1b2e5a;
     box-shadow: 0 4px 12px rgba(12, 33, 70, 0.08);
-    transition: transform 0.15s, border-color 0.2s;
+    transition: transform 0.15s, border-color 0.2s, background 0.2s;
 }
 
 .waw-zoom-btn:hover {
     transform: translateY(-1px);
     border-color: #3D5E6B;
+}
+
+.waw-zoom-reset {
+    font-size: 16px;
 }
 
 /* Side panel */
@@ -200,53 +222,53 @@
     background: #3D5E6B;
     border-radius: 18px;
     box-shadow: 0 10px 30px rgba(12, 33, 70, 0.12);
-    padding: 24px;
+    padding: 36px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 20px;
 }
 
 .waw-side-title {
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: #fff;
 }
 
 .waw-side-body {
     color: rgba(255, 255, 255, 0.8);
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     line-height: 1.6;
     margin: 0;
 }
 
 .waw-side-metrics {
     list-style: none;
-    margin: 8px 0 0;
+    margin: 12px 0 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 12px;
 }
 
 .waw-side-metrics li {
     background: #fff;
     border: 1px solid #e6edf5;
     border-radius: 12px;
-    padding: 12px 8px;
+    padding: 16px 10px;
     text-align: center;
 }
 
 .waw-side-metrics strong {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     display: block;
     color: #0c2146;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .waw-side-metrics span {
     color: #5d6b7a;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
 }
 
 /* ── FLAG MARQUEE ── */

@@ -18,7 +18,6 @@ const Footer = () => {
                         alt="Orion Technik"
                         className="d2-footer-logo"
                     />
-                    <p className="d2-footer-tagline">MAINTENANCE &amp; ENGINEERING</p>
                 </div>
 
                 {/* Col 2 – Links */}

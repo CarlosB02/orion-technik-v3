@@ -1,7 +1,7 @@
 /* ── REUSABLE GLOBAL FOOTER ── */
 
 .d2-footer {
-    background: linear-gradient(160deg, #3d5e6b 0%, #2c444d 60%, #1a2b33 100%);
+    background: linear-gradient(160deg, #3d5e6b 0%, #0c1e2b 100%);
     color: white;
     padding: 60px 0 0;
     position: relative;
@@ -9,13 +9,15 @@
     width: 100%;
 }
 
-/* Subtle dot-grid texture */
+/* Decorative grid pattern */
 .d2-footer::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 32px 32px;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
     pointer-events: none;
 }
 

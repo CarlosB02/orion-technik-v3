@@ -216,15 +216,37 @@
 
 /* ── HOTSPOTS SECTION ── */
 .caps-hotspots {
-    background: #0f1722;
-    padding: 80px 0;
+    position: relative;
+    background: linear-gradient(135deg, #091929 0%, #06111a 100%);
+    padding: 100px 0;
+    overflow: hidden;
+}
+
+.caps-hotspots::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 50%, rgba(61, 94, 107, 0.2) 0%, transparent 40%),
+        radial-gradient(circle at 85% 30%, rgba(148, 201, 226, 0.1) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+    pointer-events: none;
 }
 
 .caps-hs-shell {
-    border-radius: 18px;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-    padding: clamp(14px, 1.6vw, 20px);
-    background: rgba(3, 7, 11, 0.96);
+    position: relative;
+    border-radius: 24px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: clamp(20px, 2vw, 30px);
+    background: rgba(15, 23, 34, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 2;
 }
 
 .caps-hs-layout {
@@ -239,10 +261,11 @@
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     background: #0f1722;
-    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .caps-hs-plane-img {
@@ -250,6 +273,12 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: contrast(1.1) brightness(0.9);
+    transition: filter 0.5s ease;
+}
+
+.caps-hs-plane-inner:hover .caps-hs-plane-img {
+    filter: contrast(1.1) brightness(1);
 }
 
 /* Hotspot dots */
@@ -296,17 +325,32 @@
 
 .caps-hs-card {
     flex: 1;
-    border-radius: 16px;
-    background: radial-gradient(circle at 0 0, rgba(61, 94, 107, 0.26), rgba(15, 23, 42, 1));
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-    padding: clamp(18px, 1.9vw, 26px);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(61, 94, 107, 0.25) 0%, rgba(15, 23, 42, 0.7) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    padding: clamp(24px, 2.5vw, 34px);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: clamp(12px, 1.2vw, 18px);
     color: #e5e7eb;
-    border: 1px solid rgba(148, 163, 184, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     animation: capsFadeCard 0.25s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.caps-hs-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3D5E6B, #94c9e2);
+    border-radius: 20px 20px 0 0;
 }
 
 @keyframes capsFadeCard {
@@ -342,13 +386,13 @@
     width: fit-content;
     padding: 0.75em 1.4em;
     border-radius: 999px;
-    background: #f9fafb;
+    background: linear-gradient(90deg, #f9fafb, #e5e7eb);
     color: #0b1220;
     font-size: clamp(0.88rem, 0.2vw + 0.85rem, 1rem);
     font-weight: 600;
     text-decoration: none;
-    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.6);
-    transition: transform 0.15s, background 0.15s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
 }
 
 .caps-hs-cta:hover {
@@ -366,10 +410,12 @@
 .caps-hs-tag {
     flex: 1 1 calc(33.33% - 8px);
     min-width: 0;
-    border-radius: 10px;
-    border: 1px solid rgba(148, 163, 184, 0.45);
-    background: rgba(15, 23, 42, 0.92);
-    color: #e5e7eb;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #cbd5f5;
     padding: 0.55em 0.9em;
     font-family: 'Outfit', sans-serif;
     font-size: clamp(0.78rem, 0.2vw + 0.73rem, 0.88rem);
@@ -383,16 +429,18 @@
 }
 
 .caps-hs-tag.is-active {
-    background: #3D5E6B;
-    color: #f9fafb;
-    border-color: #4c7a8a;
-    transform: translateY(-1px);
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+    background: linear-gradient(135deg, #3D5E6B, #2c444d);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .caps-hs-tag:not(.is-active):hover {
-    background: #111827;
-    border-color: rgba(148, 163, 184, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transform: translateY(-1px);
 }
 
 /* ── TECH & ENGINEERING SUPPORT ── */
@@ -568,41 +616,88 @@
 }
 
 .caps-fleet-card {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    position: relative;
     border-radius: 18px;
-    padding: 40px 24px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 18px;
     text-align: center;
-    transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
     cursor: default;
+    background: #0f1722;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.caps-fleet-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+    transition: opacity 0.4s, transform 0.5s;
+    z-index: 1;
+}
+
+.caps-fleet-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(15, 23, 34, 0.1) 0%, rgba(15, 23, 34, 0.9) 100%);
+    z-index: 2;
+}
+
+.caps-fleet-card-content {
+    position: relative;
+    z-index: 3;
+    padding: 60px 24px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform 0.3s;
 }
 
 .caps-fleet-card:hover {
-    transform: translateY(-4px);
-    border-color: rgba(61, 94, 107, 0.5);
-    background: rgba(61, 94, 107, 0.1);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.caps-fleet-card:hover .caps-fleet-card-bg {
+    opacity: 0.6;
+    transform: scale(1.08);
+}
+
+.caps-fleet-card:hover .caps-fleet-card-content {
+    transform: translateY(-5px);
 }
 
 .caps-fleet-icon {
     width: 64px;
     height: 64px;
     border-radius: 16px;
-    background: rgba(61, 94, 107, 0.2);
-    border: 1px solid rgba(61, 94, 107, 0.3);
+    background: rgba(15, 23, 34, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #c3c8b3;
-    transition: background 0.2s;
+    color: #f9fafb;
+    transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .caps-fleet-card:hover .caps-fleet-icon {
-    background: rgba(61, 94, 107, 0.35);
+    background: rgba(61, 94, 107, 0.9);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+    box-shadow: 0 12px 24px rgba(61, 94, 107, 0.4);
+    color: #fff;
 }
 
 .caps-fleet-icon svg {
@@ -612,10 +707,214 @@
 
 .caps-fleet-card h4 {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.85);
+    color: #ffffff;
     line-height: 1.35;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ── SUPPORTED FLEET (OPTION 2 - CREATIVE ASTHETIC) ── */
+.caps-fleet-v2 {
+    background: #f4f7f9;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.caps-fleet-v2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(107, 61, 61, 0.2), transparent);
+}
+
+.caps-fleet-v2 .cap-label {
+    color: #3D5E6B;
+    background: rgba(61, 94, 107, 0.08);
+    border-color: rgba(61, 94, 107, 0.2);
+}
+
+.caps-fleet-v2 .caps-fleet-heading {
+    color: #0b1f2d;
+}
+
+.caps-fleet-v2 .caps-fleet-sub {
+    color: #5d6b7a;
+}
+
+.caps-fleet-v2-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.caps-fleet-v2-card {
+    position: relative;
+    border-radius: 0;
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    cursor: pointer;
+    background: transparent;
+    clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.caps-fleet-v2-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Image shell and overlay */
+.v2-card-img-shell {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1;
+}
+
+.v2-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 245, 248, 0.8) 100%);
+    transition: opacity 0.4s ease, background 0.4s ease;
+}
+
+.caps-fleet-v2-card:hover .v2-card-img-shell {
+    transform: scale(1.1);
+}
+
+.caps-fleet-v2-card:hover .v2-card-overlay {
+    opacity: 0.85;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(148, 201, 226, 0.4) 100%);
+}
+
+/* Border effects simulating tech frame */
+.v2-card-border-fx {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border: 1px solid rgba(61, 94, 107, 0.15);
+    clip-path: polygon(15% 0, 100% 0, 100% 85%, 85% 100%, 0 100%, 0 15%);
+    pointer-events: none;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.caps-fleet-v2-card:hover .v2-card-border-fx {
+    border-color: rgba(61, 94, 107, 0.4);
+    box-shadow: inset 0 0 20px rgba(61, 94, 107, 0.1);
+}
+
+/* Card Content Structure */
+.v2-card-data {
+    position: relative;
+    z-index: 4;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.v2-icon-wrap {
+    width: 48px;
+    height: 48px;
+    color: #ffffff;
+    background: #3D5E6B;
+    border: 1px solid rgba(61, 94, 107, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    align-self: flex-start;
+}
+
+.v2-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+}
+
+.caps-fleet-v2-card:hover .v2-icon-wrap {
+    background: #0b1f2d;
+    color: #ffffff;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 5px 15px rgba(11, 31, 45, 0.25);
+}
+
+.v2-text-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.caps-fleet-v2-card:hover .v2-text-wrap {
+    transform: translateY(0);
+}
+
+.v2-text-wrap h4 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #0b1f2d;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+.v2-line {
+    width: 0;
+    height: 2px;
+    background: #3D5E6B;
+    margin: 15px 0;
+    transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: 0.1s;
+}
+
+.caps-fleet-v2-card:hover .v2-line {
+    width: 40px;
+}
+
+.v2-discover {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(61, 94, 107, 0);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: color 0.4s ease, transform 0.4s ease;
+    transform: translateX(-10px);
+}
+
+.caps-fleet-v2-card:hover .v2-discover {
+    color: #3D5E6B;
+    transform: translateX(0);
+}
+
+@media (max-width: 1080px) {
+    .caps-fleet-v2-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .caps-fleet-v2-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .caps-fleet-v2-card {
+        height: 350px;
+    }
 }
 
 /* ── CONTACT FORM ── */

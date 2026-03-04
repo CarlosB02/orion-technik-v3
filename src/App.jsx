@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './components/Home/Home';
 import Design2 from './components/Design2/Design2';
-import MeetOurTeam from './components/MeetOurTeam/MeetOurTeam';
 import Capabilities from './components/Capabilities/Capabilities';
 import Quality from './components/Quality/Quality';
 import NewsPage from './components/NewsPage/NewsPage';
@@ -17,9 +15,7 @@ function App() {
       <ScrollToTop />
       <div className="app">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/design2" element={<Design2 />} />
-          <Route path="/meet-our-team" element={<MeetOurTeam />} />
+          <Route path="/" element={<Design2 />} />
           <Route path="/capabilities" element={<Capabilities />} />
           <Route path="/quality" element={<Quality />} />
           <Route path="/news-page" element={<NewsPage />} />

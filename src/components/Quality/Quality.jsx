@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../Capabilities/Capabilities.css';
 import './Quality.css';
 import Footer from '../Footer/Footer';
+import D2ContactSection from '../Design2/D2ContactSection';
+import D2Header from '../Design2/D2Header';
+
+/* ── Imagens de Background (Local / Dispositivo) ── */
+// 1. Coloque as suas imagens na pasta: src/assets/
+// 2. Importe as imagens abaixo alterando o nome do ficheiro (ex: 'minha-foto.jpg')
+import HERO_BG_IMAGE from '../../assets/hero-quality.jpg';
+import QUALITY_FIXED_BG from '../../assets/Grid 04.png';
 
 /* ── Certifications data ── */
 const certs = [
@@ -66,32 +73,19 @@ const certs = [
 /* ── Component ── */
 const Quality = () => {
     const [active, setActive] = useState(0);
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-    const [sent, setSent] = useState(false);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setSent(true);
-    };
 
     return (
         <div className="cap-page qlt-page">
 
             {/* ── HEADER (shared) ── */}
-            <header className="cap-header">
-                <Link to="/design2" className="cap-back">← Orion Technik</Link>
-                <nav className="cap-nav">
-                    <Link to="/capabilities">Capabilities</Link>
-                    <Link to="/quality" className="cap-nav--active">Quality</Link>
-                    <Link to="/news-page">News</Link>
-                    <Link to="/where-are-we">Where Are We</Link>
-                    <Link to="/contacts">Contacts</Link>
-                </nav>
-            </header>
+            <D2Header activePage="quality" />
 
             {/* ── HERO ── */}
             <section className="qlt-hero">
-                <div className="qlt-hero-bg" />
+                <div
+                    className="qlt-hero-bg"
+                    style={HERO_BG_IMAGE ? { backgroundImage: `url(${HERO_BG_IMAGE})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                />
                 <div className="qlt-hero-content">
                     <span className="cap-label">Standards &amp; Certifications</span>
                     <h1>Quality</h1>
@@ -100,7 +94,10 @@ const Quality = () => {
             </section>
 
             {/* ── INTRO ── */}
-            <section className="qlt-intro">
+            <section
+                className="qlt-intro"
+                style={QUALITY_FIXED_BG ? { backgroundImage: `url(${QUALITY_FIXED_BG})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : {}}
+            >
                 <div className="qlt-container">
                     <h2>We pay attention to the detail</h2>
                     <p>
@@ -155,64 +152,14 @@ const Quality = () => {
                 </div>
             </section>
 
-            {/* ── CONTACT FORM ── */}
-            <section className="qlt-contact">
-                <div className="qlt-container qlt-contact-inner">
-                    <div className="qlt-contact-text">
-                        <span className="cap-label">Get In Touch</span>
-                        <h2>Questions about our certifications?</h2>
-                        <p>Our quality team is happy to provide documentation, answer audit queries, or discuss partnerships.</p>
-                    </div>
-                    <form className="qlt-form" onSubmit={handleSubmit}>
-                        {sent ? (
-                            <div className="qlt-success">
-                                <span>✓</span>
-                                <p>Message sent! We'll be in touch shortly.</p>
-                            </div>
-                        ) : (
-                            <>
-                                <div className="qlt-form-row">
-                                    <div className="qlt-field">
-                                        <label htmlFor="qlt-name">Name</label>
-                                        <input
-                                            id="qlt-name"
-                                            type="text"
-                                            placeholder="Your name"
-                                            value={formData.name}
-                                            onChange={e => setFormData({ ...formData, name: e.target.value })}
-                                            required
-                                        />
-                                    </div>
-                                    <div className="qlt-field">
-                                        <label htmlFor="qlt-email">Email</label>
-                                        <input
-                                            id="qlt-email"
-                                            type="email"
-                                            placeholder="your@email.com"
-                                            value={formData.email}
-                                            onChange={e => setFormData({ ...formData, email: e.target.value })}
-                                            required
-                                        />
-                                    </div>
-                                </div>
-                                <div className="qlt-field">
-                                    <label htmlFor="qlt-msg">Message</label>
-                                    <textarea
-                                        id="qlt-msg"
-                                        rows={5}
-                                        placeholder="How can we help you?"
-                                        value={formData.message}
-                                        onChange={e => setFormData({ ...formData, message: e.target.value })}
-                                        required
-                                    />
-                                </div>
-                                <button type="submit" className="qlt-submit">Send Message →</button>
-                            </>
-                        )}
-                    </form>
-                </div>
-            </section>
-            <Footer />
+            {/* ── SECTIONS BELOW CERTS ── */}
+            <div
+                className="qlt-bottom-wrapper"
+                style={QUALITY_FIXED_BG ? { backgroundImage: `url(${QUALITY_FIXED_BG})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed' } : {}}
+            >
+                <D2ContactSection />
+                <Footer />
+            </div>
         </div>
     );
 };
